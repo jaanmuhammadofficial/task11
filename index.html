@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jaan Muhammad | DevOps Engineer</title>
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --ink: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --rule: #e5e7eb;
+    }
+    * { margin:0; padding:0; box-sizing:border-box }
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: var(--accent); }
+    header {
+      background: #0f1111;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 { font-size: 22px; color: #ff9900; }
+    nav a {
+      margin-left: 20px;
+      color: white;
+      font-size: 14px;
+    }
+    nav a:hover { color: #ff9900; }
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #0f1111, #1f2937);
+      color: white;
+    }
+    .hero img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid #ff9900;
+      margin-bottom: 15px;
+    }
+    .hero h2 { font-size: 28px; }
+    .hero p { font-size: 16px; color: #d1d5db; }
+    section {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    section h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+    ul { list-style: none; }
+    ul li { margin: 6px 0; }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .chip {
+      padding: 6px 12px;
+      background: #eef2ff;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: #374151;
+      border: 1px solid #dbeafe;
+    }
+    footer {
+      text-align: center;
+      background: #0f1111;
+      color: #9ca3af;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1>Jaan Muhammad</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <img src="https://via.placeholder.com/150" alt="Profile">
+    <h2>DevOps Engineer</h2>
+    <p>Automating systems, deploying scalable apps, and delivering efficient IT solutions 🚀</p>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I’m <b>Jaan Muhammad</b>, a passionate <b>DevOps Engineer</b> with a BSCS degree. 
+       I specialize in CI/CD pipelines, Docker, Kubernetes, and cloud automation. 
+       With experience in IT,I bridge business and technology to deliver impactful solutions.</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="chips">
+      <span class="chip">CI/CD</span>
+      <span class="chip">Docker</span>
+      <span class="chip">AWS</span>
+      <span class="chip">Terraform</span>
+      <span class="chip">Python</span>
+      <span class="chip">Bash</span>
+    
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <ul>
+      <li><b>DevOps Engineer</b> — Adan IT Center(2025 – Present)</li>
+      <li><b>Flutter Developer</b> — Devicons (2024)</li>
+       <li><b>Amazon Specialist</b> — AIA Global Resource Ltd (2023)</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li>🚀 CI/CD Pipeline Setup with GitHub Actions & Docker</li>
+      <li>☁️ Cloud Infrastructure on AWS</li>
+      <li>💻 Portfolio Website hosted on GitLab Pages</li>
+    </ul>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <p><b>BSCS</b> — Khawaja Fareed University of Engineering & IT (2018–2022) | CGPA 3.0/4.0</p>
+    <p><b>F.Sc Pre-Engineering</b> — Punjab College, Sadiqabad (2016–2018)</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>📧 <a href="mailto:jm2239982@gmail.com">jm2239982@gmail.com</a></p>
+    <p>📞 +92 302 7616166</p>
+    <p>🔗 <a href="https://gitlab.com/yourusername" target="_blank">GitLab</a> | 
+       <a href="https://www.linkedin.com/in/jaan-muhammad-361199242" target="_blank">LinkedIn</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Jaan Muhammad | DevOps Engineer | All Rights Reserved
+  </footer>
+
+</body>
+</html>
