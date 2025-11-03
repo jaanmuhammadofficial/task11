@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline with SonarQube
 
 on:
   push:
@@ -9,8 +9,38 @@ env:
   APP_PORT: 8082
 
 jobs:
+  # =======================
+  # 1️⃣ SonarQube Analysis
+  # =======================
+  sonarqube:
+    name: SonarQube Code Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Required for accurate code analysis
+
+      - name: Run SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      # Uncomment this to fail the pipeline if quality gate fails
+      # - name: Check Quality Gate
+      #   uses: sonarsource/sonarqube-quality-gate-action@master
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  # =======================
+  # 2️⃣ Build Docker Image
+  # =======================
   build:
+    name: Build Docker Image
     runs-on: self-hosted
+    needs: sonarqube
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,7 +48,11 @@ jobs:
       - name: Build Docker image
         run: docker build -t $APP_NAME:latest .
 
+  # =======================
+  # 3️⃣ Deploy Container
+  # =======================
   deploy:
+    name: Deploy Application
     runs-on: self-hosted
     needs: build
     steps:
@@ -37,7 +71,11 @@ jobs:
           echo "Starting new container..."
           docker run -d -p $APP_PORT:80 --name ${APP_NAME}-container $APP_NAME:latest
 
+  # =======================
+  # 4️⃣ Test Application
+  # =======================
   test:
+    name: Test Deployed App
     runs-on: self-hosted
     needs: deploy
     steps:
@@ -47,9 +85,9 @@ jobs:
       - name: Test container response
         run: |
           if curl -s http://localhost:$APP_PORT | grep -q "<html"; then
-            echo " Test passed: Container is serving content on port $APP_PORT."
+            echo "✅ Test passed: Container is serving content on port $APP_PORT."
           else
-            echo " Test failed: Container did not respond correctly."
+            echo "❌ Test failed: Container did not respond correctly."
             echo "===== Container Logs ====="
             docker logs ${APP_NAME}-container || true
             exit 1
